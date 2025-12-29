@@ -1,4 +1,4 @@
-public class lc3 {
+public  class lc3 {
     public int lengthOfLongestSubstring(String s) {
         int[] count = new int[1000];
         boolean duplicated = false;
@@ -22,5 +22,22 @@ public class lc3 {
             //duplicated = false;
         }
         return maxLength;
+    }
+
+    public static int lengthOfLongestSubstring2String1(String s) {
+        boolean[] arr = new boolean[128];
+        int maxLen = 0, r = 0, l = 0;
+
+        while (r < s.length()) {
+            if (!arr[s.charAt(r)]) {
+                arr[s.charAt(r)] = true;
+                maxLen = Math.max(maxLen, r - l + 1);
+                r++;
+            } else {
+                arr[s.charAt(l)] = false;
+                l++;
+            }
+        }
+        return maxLen;
     }
 }
